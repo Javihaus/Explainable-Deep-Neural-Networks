@@ -1,0 +1,14 @@
+# Documentation Images Directory
+
+This directory contains images used in the documentation and README.
+
+## Image Guidelines
+
+- Use descriptive filenames (e.g., `persistence-diagrams-evolution.png`)
+- Optimize images for web display (< 1MB when possible)
+- Use PNG format for diagrams and technical illustrations
+- Include alt text for accessibility
+
+## Current Images
+
+- Add your documentation images here

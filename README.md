@@ -51,7 +51,7 @@ TDA provides mathematical tools to study the shape and structure of data across 
 
 For a filtration of spaces $X_0 \subseteq X_1 \subseteq \cdots \subseteq X_n$, persistent homology tracks when topological features appear (birth) and disappear (death):
 
-$$H_k(X_i) \rightarrow H_k(X_j) \text{ for } i \leq j$$
+$H_k(X_i) \rightarrow H_k(X_j) \text{ for } i \leq j$
 
 Where $H_k$ represents the $k$-dimensional homology groups:
 - **$H_0$**: Connected components (clusters)
@@ -62,7 +62,7 @@ Where $H_k$ represents the $k$-dimensional homology groups:
 
 For point cloud $X \subset \mathbb{R}^n$ and radius $r$, the Vietoris-Rips complex $VR(X,r)$ includes:
 
-$$VR(X,r) = \{\sigma \subseteq X : d(x,y) \leq r \text{ for all } x,y \in \sigma\}$$
+$VR(X,r) = \{\sigma \subseteq X : d(x,y) \leq r \text{ for all } x,y \in \sigma\}$
 
 This creates a simplicial complex where k-simplices represent (k+1)-point cliques within distance $r$.
 
@@ -72,7 +72,7 @@ This creates a simplicial complex where k-simplices represent (k+1)-point clique
 
 For neural network layer $L_i$ with activation function $\phi_i$:
 
-$$\mathbf{a}^{(i)} = \phi_i(W^{(i)} \mathbf{a}^{(i-1)} + \mathbf{b}^{(i)})$$
+$\mathbf{a}^{(i)} = \phi_i(W^{(i)} \mathbf{a}^{(i-1)} + \mathbf{b}^{(i)})$
 
 Where:
 - $\mathbf{a}^{(i)} \in \mathbb{R}^{n_i}$: Layer $i$ activations
@@ -83,9 +83,28 @@ Where:
 
 We track how topological invariants change across layers:
 
-$$\beta_k^{(i)} = \text{rank}(H_k(\mathbf{a}^{(i)}))$$
+$\beta_k^{(i)} = \text{rank}(H_k(\mathbf{a}^{(i)}))$
 
 Where $\beta_k^{(i)}$ is the $k$-th Betti number at layer $i$.
+
+#### Persistence Diagrams Through Network Layers
+
+The following persistence diagrams illustrate how topological features evolve as data flows through a deep neural network trained on molecular data:
+
+<div align="center">
+  <img src="docs/images/persistence-diagrams-evolution.png" alt="Persistence diagrams showing topological feature evolution through neural network layers" width="800"/>
+  <br>
+  <em>Evolution of persistent homology features across neural network layers. Each diagram shows birth-death pairs of topological features, with the diagonal line representing noise threshold.</em>
+</div>
+
+**Key Observations:**
+- **Original Data**: Rich topological structure with multiple connected components (red points near y-axis) and higher-dimensional features (loops and voids)
+- **First Dense Layer**: Maintains topological complexity while beginning to organize the feature space  
+- **Intermediate Layers (2nd & 3rd)**: Progressive simplification of topological structure, fewer persistent features
+- **Output Layer**: Highly compressed representation with minimal topological features, focusing on decision boundaries
+- **Feature Compression**: The "maximum distance" annotation in the output layer shows the dramatic scale reduction from input to output
+
+This visualization demonstrates how neural networks perform **topological data compression**, preserving essential geometric relationships while eliminating noise and redundant topological features. The systematic reduction in feature complexity reflects the network's hierarchical learning process.
 
 ### 3. Mapper Algorithm
 
@@ -101,7 +120,7 @@ The Mapper algorithm creates a topological summary of high-dimensional data:
 
 We use eccentricity as our primary filter function:
 
-$$\text{ecc}(x) = \max_{y \in X} d(x,y)$$
+$\text{ecc}(x) = \max_{y \in X} d(x,y)$
 
 This captures the "centrality" of each point in the dataset.
 
@@ -109,7 +128,7 @@ This captures the "centrality" of each point in the dataset.
 
 UMAP (Uniform Manifold Approximation and Projection) preserves both local and global structure:
 
-$$P_{ij} = \exp\left(-\max(0, d_{ij} - \rho_i)/\sigma_i\right)$$
+$P_{ij} = \exp\left(-\max(0, d_{ij} - \rho_i)/\sigma_i\right)$
 
 Where $\rho_i$ and $\sigma_i$ are local distance parameters ensuring local connectivity.
 
