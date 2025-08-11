@@ -124,6 +124,35 @@ $\text{ecc}(x) = \max_{y \in X} d(x,y)$
 
 This captures the "centrality" of each point in the dataset.
 
+#### Mapper Graphs Across Neural Network Layers
+
+The following Mapper visualizations demonstrate how the topological structure and connectivity patterns change as data flows through different layers of the neural network:
+
+<div align="center">
+  <img src="docs/images/mapper.png" alt="Mapper algorithm visualizations showing network topology evolution across layers" width="900"/>
+  <br>
+  <em>Mapper graphs for each neural network layer using eccentricity filter. Node colors represent molecular activity levels (pIC50 values), with network topology revealing data organization patterns.</em>
+</div>
+
+**Topological Evolution Analysis:**
+
+- **Original Data (Top Left)**: Complex, highly connected graph structure with multiple branches and dense connectivity, reflecting the high-dimensional molecular feature space
+- **Layer 1 (Top Right)**: Maintains structural complexity but shows initial organization, with clear separation starting to emerge between different molecular activity regions
+- **Layer 2 (Middle Left)**: Simplified topology with reduced branching, indicating dimensional reduction while preserving essential connectivity patterns
+- **Layer 3 (Middle Right)**: Further structural simplification with more linear arrangements, showing progressive data organization toward decision boundaries
+- **Layer 4 (Bottom Left)**: Highly simplified, nearly linear structure reflecting the compressed representation near the output layer
+- **Original Data Comparison (Bottom Right)**: Provides reference to compare against the progressive simplification
+
+**Key Insights:**
+
+1. **Progressive Simplification**: Each layer systematically reduces topological complexity while preserving critical structural relationships
+2. **Connectivity Preservation**: Essential connections between similar molecular compounds are maintained throughout the network
+3. **Activity Clustering**: The color gradients show how molecules with similar pIC50 values cluster together in the topological space
+4. **Decision Boundary Formation**: The final layers show clear linear arrangements that facilitate binary classification
+5. **Information Compression**: The dramatic reduction from complex branched structures to simple linear arrangements demonstrates effective information compression
+
+This visualization reveals how neural networks perform **topological feature extraction**, transforming complex high-dimensional molecular relationships into simplified, decision-relevant geometric structures.
+
 ### 4. UMAP Dimensionality Reduction
 
 UMAP (Uniform Manifold Approximation and Projection) preserves both local and global structure:
