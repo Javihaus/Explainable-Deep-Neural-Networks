@@ -92,12 +92,12 @@ Where $\beta_k^{(i)}$ is the $k$-th Betti number at layer $i$.
 The following persistence diagrams illustrate how topological features evolve as data flows through a deep neural network trained on molecular data:
 
 <div align="center">
-  <img src="docs/images/persistence-diagrams-evolution.png" alt="Persistence diagrams showing topological feature evolution through neural network layers" width="800"/>
+  <img src="docs/images/Image_NN_Topology.png" alt="Persistence diagrams showing topological feature evolution through neural network layers" width="800"/>
   <br>
   <em>Evolution of persistent homology features across neural network layers. Each diagram shows birth-death pairs of topological features, with the diagonal line representing noise threshold.</em>
 </div>
 
-**Key Observations:**
+**Interpretation:**
 - **Original Data**: Rich topological structure with multiple connected components (red points near y-axis) and higher-dimensional features (loops and voids)
 - **First Dense Layer**: Maintains topological complexity while beginning to organize the feature space  
 - **Intermediate Layers (2nd & 3rd)**: Progressive simplification of topological structure, fewer persistent features
